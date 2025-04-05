@@ -50,9 +50,9 @@ Pictor 98 is a retro-styled web application that generates a random daily pictur
    NASA_API_KEY=YOUR_NASA_API_KEY
    ```
 
-    > [!NOTE]
-    >
-    > You can obtain a free API key from the [NASA API website](https://api.nasa.gov/). This key is required to access the APOD API. If you don't have an API key, the app will use the default `DEMO_KEY`, however this has much lower rate limits.
+  > [!NOTE]
+  > 
+  > You can obtain a free API key from the [NASA API website](https://api.nasa.gov/). This key is required to access the APOD API. If you don't have an API key, the app will use the default `DEMO_KEY`, however this has much lower rate limits.
 
 4. **Run the Application**
 
