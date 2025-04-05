@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { readFile } from "fs/promises";
+import { NASA_API_KEY } from "../config/apodConfig.js";
 import path from "path";
 
 export const fetchApodData = async (_req: Request, res: Response) => {
@@ -7,16 +8,16 @@ export const fetchApodData = async (_req: Request, res: Response) => {
   const timeout = setTimeout(() => controller.abort(), 5000);
 
   try {
-    // Use the "count" parameter of NASA's APOD API to fetch a random image from the archive.
     const nasaRes = await fetch(
-      "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&count=1",
+      `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}&count=1`,
       { signal: controller.signal }
     );
-    if (!nasaRes.ok) throw new Error("NASA API request failed");
+    if (!nasaRes.ok) {
+      throw new Error(`NASA API request failed with status ${nasaRes.status}`);
+    }
     const nasaArray = await nasaRes.json();
     const nasaData = nasaArray[0];
 
-    // Use an absolute path to load greetings from the JSON file
     const greetingsPath = path.join(
       process.cwd(),
       "src",
@@ -24,18 +25,27 @@ export const fetchApodData = async (_req: Request, res: Response) => {
       "greetings.json"
     );
     const greetingsData = await readFile(greetingsPath, "utf8");
-    const greetings: string[] = JSON.parse(greetingsData);
+    const greetingsObject = JSON.parse(greetingsData);
+    const greetings: string[] = greetingsObject.greetings;
     const greeting = greetings[Math.floor(Math.random() * greetings.length)];
 
-    // Render the 'index' view with the random NASA image and a greeting.
     res.render("index", {
       apodUrl: nasaData.url,
       greeting,
     });
-  } catch (error) {
-    console.error("Error fetching data:", error);
+  } catch (error: any) {
+    if (error.name === "AbortError") {
+      console.error("NASA API request timed out:", error);
+    } else {
+      console.error("Error fetching data:", error);
+    }
+    // You could implement a retry mechanism here if desired
+
     res.status(500).render("error", {
-      message: "Failed to fetch NASA APOD.",
+      message:
+        error.name === "AbortError"
+          ? "The request timed out. Please try again later."
+          : "Failed to fetch NASA APOD. Please try again later.",
     });
   } finally {
     clearTimeout(timeout);

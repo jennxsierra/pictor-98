@@ -1,6 +1,28 @@
-[
-  "Hello!",
-  "Welcome to NASA APOD!",
-  "Enjoy today's image!",
-  "Good day and good viewing!"
-]
+{
+  "meta": {
+    "author": "Jennessa Sierra"
+  },
+  "greetings": [
+    "Welcome, stardust traveler!",
+    "Greetings, celestial explorer!",
+    "Hello, cosmic wanderer!",
+    "Salutations from the far reaches of the universe!",
+    "Beam up and enjoy your journey among the stars!",
+    "Hi there, nebula navigator!",
+    "Warm wishes from your friendly interstellar neighbor!",
+    "May the stars guide your way!",
+    "Hello, comet chaser!",
+    "Orbit around joy!",
+    "Radiant greetings from the cosmic frontier!",
+    "Embrace the infinite sparkle of the cosmos!",
+    "Hello, supernova seeker!",
+    "Stellar salutations to you!",
+    "Wishing you a universe of wonder!",
+    "Hello, seeker of astronomical adventures!",
+    "May your journey be as bright as a quasar!",
+    "Welcome to the galactic parade!",
+    "Hello, explorer of the infinite!",
+    "Greetings, voyager of the intergalactic realm!",
+    "May your path be illuminated by starlight!"
+  ]
+}
