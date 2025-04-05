@@ -7,15 +7,19 @@ export const fetchApodData = async (_req: Request, res: Response) => {
   try {
     const { apod, greeting } = await getApodAndGreeting();
     res.render("index", {
+      mediaType: apod.media_type,
       apodUrl: apod.url,
+      title: apod.title,
+      copyright: apod.copyright || "Public Domain",
       greeting,
     });
   } catch (error: any) {
     console.error("NASA API failed after retries:", error);
-    // Use the fallback image only if the NASA API does not respond
-    // Greeting will still be fetched from the local JSON within the service
     res.render("index", {
+      mediaType: "image",
       apodUrl: FALLBACK_IMAGE_URL,
+      title: "Hubble Ultra Deep Field", // Fallback title
+      copyright: "NASA/ESA", // Fallback copyright
       greeting: "Unable to fetch NASA image. " + "Enjoy this fallback view!",
     });
   }

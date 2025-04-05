@@ -42,7 +42,7 @@ body {
 .app-window {
   width: 90%;
   max-width: 700px;
-  max-height: 700px;
+  max-height: 800px;
   flex: 1 0 auto;
   background-color: #f0f0f0;
   margin: 2rem auto;
@@ -105,15 +105,16 @@ body {
 .grid-container {
   display: grid;
   grid-template-rows: auto auto auto;
-  gap: 1rem;
+  gap: 0.5rem;
   justify-items: center; /* Centers grid items horizontally */
   text-align: center; /* Centers text inside grid items */
+  margin-top: 1rem;
 }
 
-/* ----------------------- APOD Image ----------------------- */
+/* ----------------------- APOD Image/Video ----------------------- */
 .apod-img {
-  width: 500px;      /* Set a fixed width */
-  height: 500px;     /* Set a fixed height */
+  width: 500px; /* Set a fixed width */
+  height: 500px; /* Set a fixed height */
   object-fit: cover; /* Crop the image to fill the area */
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -124,12 +125,36 @@ body {
   transform: scale(1.05);
 }
 
+.apod-video {
+  width: 500px;
+  height: 500px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.apod-info {
+  font-size: 14px;
+  color: #333;
+  margin-top: 0.5rem;
+}
+
+/* ----------------------- Greeting ----------------------- */
+.greeting {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin-top: 2rem;
+}
+
+/* ----------------------- Randomize Button ----------------------- */
+
 .grid-container button {
   padding: 4px 8px;
   border: 1px solid #c0c0c0;
   background-color: #e0e0e0;
   color: #000;
   cursor: pointer;
+  margin-top: 2rem;
 }
 
 .grid-container button:hover {

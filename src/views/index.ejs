@@ -12,8 +12,28 @@
     </div>
     <div class="window-content">
       <div class="grid-container">
-        <img src="<%= apodUrl %>" alt="NASA APOD" class="apod-img" />
-        <div><%= greeting %></div>
+        <!-- Verify if the media type is image or video -->
+        <% if (mediaType === "image") { %>
+          <img src="<%= apodUrl %>" alt="NASA APOD" class="apod-img" loading="lazy" />
+          <!--  Use iframe for video -->
+        <% } else if (mediaType === "video") { %>
+          <iframe
+            class="apod-video"
+            src="<%= apodUrl %>"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        <% } %>
+
+        <!-- Display title and copyright -->
+        <div class="apod-info">
+          <strong>Title:</strong> <%= title %>
+          <br />
+          <strong>Credit:</strong> <%= copyright %>
+        </div>
+
+        <!-- Display greeting -->
+        <div class="greeting"><%= greeting %></div>
 
         <!-- Randomize Button -->
         <button onclick="location.reload()">Randomize</button>
