@@ -1,0 +1,28 @@
+<!-- Filename: views/error.ejs -->
+<%- include('partials/header') %>
+    <!-- Main Page Container -->
+    <main class="page-container">
+      <!-- Application Window -->
+      <div class="app-window">
+        <!-- Title Bar -->
+        <div class="window-titlebar">
+          <span class="window-title">Error</span>
+          <!-- Window Control Buttons -->
+          <div class="window-controls">
+            <button class="window-btn minimize" title="Minimize">_</button>
+            <button class="window-btn maximize" title="Maximize">☐</button>
+            <button class="window-btn close" title="Close">X</button>
+          </div>
+        </div>
+        <!-- Window Content -->
+        <div class="window-content">
+          <section class="error-section" style="text-align: center">
+            <h2>404 Error</h2>
+            <p><%= message %></p>
+          </section>
+        </div>
+      </div>
+    </main>
+<!-- Footer Section -->
+<%- include('partials/footer') %>
+

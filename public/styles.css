@@ -1,0 +1,117 @@
+/* Filename: public/styles.css */
+
+/* Import Fonts */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap");
+
+/* ----------------------- Global Reset & Base Styles ----------------------- */
+* {
+  box-sizing: border-box;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #adadad;
+}
+
+/* ----------------------- Header ----------------------- */
+.header {
+  display: flex;
+  justify-content: center; /* Centers the image horizontally */
+  align-items: center; /* Centers the image vertically */
+  height: 100px; /* Adjust height as needed */
+}
+
+.header-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Ensures the image scales properly */
+}
+
+/* ----------------------- Main Container ----------------------- */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ----------------------- App Window ----------------------- */
+.app-window {
+  width: 90%;
+  max-width: 800px;
+  flex: 1 0 auto;
+  background-color: #f0f0f0;
+  margin: 2rem auto;
+  border: 2px solid #999999;
+  box-shadow: 10px 10px 0px 0px #000080;
+}
+
+/* ----------------------- Title Bar & Window Controls ----------------------- */
+.window-titlebar {
+  background: linear-gradient(to bottom, #000080, #0000cd);
+  color: #fff;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  border-bottom: 2px solid #999999;
+}
+
+.window-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.window-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.window-btn {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #c0c0c0;
+  background-color: #e0e0e0;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.window-btn:hover {
+  background-color: #d0d0d0;
+}
+
+/* ----------------------- Window Content ----------------------- */
+.window-content {
+  padding: 1rem;
+}
+
+.window-content h2 {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+/* ----------------------- Footer ----------------------- */
+.footer {
+  flex-shrink: 0;
+  text-align: center;
+  background-color: #1c1c1c;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid #333;
+}
+
+.footer p {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  color: #ccc;
+}
