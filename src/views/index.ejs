@@ -1,24 +1,22 @@
-<!-- Filename: views/index.ejs -->
 <%- include('partials/header') %>
-    <!-- Main Page Container: Flex container for sticky footer -->
-    <main class="page-container">
-      <!-- Application Window (Windows98-style) -->
-      <div class="app-window">
-        <!-- Window Title Bar -->
-        <div class="window-titlebar">
-          <span class="window-title">Task Manager</span>
-          <div class="window-controls">
-            <!-- Placeholder window control buttons -->
-            <button class="window-btn minimize" title="Minimize">_</button>
-            <button class="window-btn maximize" title="Maximize">☐</button>
-            <button class="window-btn close" title="Close">X</button>
-          </div>
-        </div>
-        <!-- Window Content Area -->
-        <div class="window-content">
-          
-        </div>
+<main class="page-container">
+  <div class="app-window">
+    <div class="window-titlebar">
+      <span class="window-title">NASA APOD & Greeting</span>
+    </div>
+    <div class="window-content">
+      <div style="display: grid; grid-template-rows: auto auto auto; gap: 1rem">
+        <img src="<%= apodUrl %>" alt="NASA APOD" style="max-width: 100%" />
+        <div><%= greeting %></div>
+        <!-- Link to refresh the page by going to "/" again -->
+        <a
+          href="/"
+          style="padding: 6px; background-color: #ccc; text-decoration: none"
+        >
+          Refresh APOD & Greeting
+        </a>
       </div>
-    </main>
-<!-- Footer Section -->
+    </div>
+  </div>
+</main>
 <%- include('partials/footer') %>
