@@ -10,11 +10,60 @@
   font-family: "IBM Plex Mono", monospace;
 }
 
-html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #adadad;
+  height: 100vh;
+  background-color: #000000; /* Fallback for older browsers */
+  position: relative; /* Needed for pseudo-element positioning */
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #0d1117, #000000); /* Dark gradient */
+  background-image: radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 255, 255, 0.8) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 70% 80%,
+      rgba(255, 255, 255, 0.6) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.4) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(255, 255, 255, 0.7) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 10% 70%,
+      rgba(255, 255, 255, 0.5) 1px,
+      transparent 1px
+    );
+  background-size: 100% 100%;
+  animation: twinkle 5s infinite alternate;
+  z-index: -1; /* Place behind all content */
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 /* ----------------------- Header ----------------------- */
@@ -23,6 +72,8 @@ body {
   justify-content: center; /* Centers the image horizontally */
   align-items: center; /* Centers the image vertically */
   height: 100px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 .header-logo {
@@ -40,26 +91,29 @@ body {
 
 /* ----------------------- App Window ----------------------- */
 .app-window {
+  position: relative; /* Ensure it stays above the background */
+  z-index: 1; /* Higher than the background */
   width: 90%;
   max-width: 700px;
-  max-height: 800px;
+  max-height: 825px;
   flex: 1 0 auto;
-  background-color: #f0f0f0;
   margin: 2rem auto;
-  border: 2px solid #999999;
-  box-shadow: 10px 10px 0px 0px #000080;
+  background-color: #161b22;
+  border: 2px solid #30363d;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
 /* ----------------------- Title Bar & Window Controls ----------------------- */
 .window-titlebar {
-  background: linear-gradient(to bottom, #000080, #0000cd);
+  background: linear-gradient(to bottom, #21262d, #30363d);
+  color: #58a6ff;
+  border-bottom: 2px solid #30363d;
   color: #fff;
   padding: 4px 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-weight: bold;
-  border-bottom: 2px solid #999999;
 }
 
 .window-title {
@@ -92,6 +146,7 @@ body {
 /* ----------------------- Window Content ----------------------- */
 .window-content {
   padding: 1rem;
+  color: #c9d1d9;
 }
 
 .window-content h2 {
@@ -117,57 +172,67 @@ body {
   height: 500px; /* Set a fixed height */
   object-fit: cover; /* Crop the image to fill the area */
   border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
 
 .apod-img:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); /* Stronger glow on hover */
 }
 
 .apod-video {
   width: 500px;
   height: 500px;
   border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.apod-img,
+.apod-video {
+  border: 2px solid #30363d; /* Border for media */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Glowing effect */
 }
 
 .apod-info {
   font-size: 14px;
-  color: #333;
   margin-top: 0.5rem;
 }
 
 /* ----------------------- Greeting ----------------------- */
 .greeting {
-  font-size: 18px;
-  font-weight: 500;
-  color: #333;
+  font-size: 20px;
+  font-weight: bold;
+  color: #58a6ff;
+  text-shadow: 0 0 2px rgba(88, 166, 255, 0.8);
   margin-top: 2rem;
 }
 
 /* ----------------------- Randomize Button ----------------------- */
 
 .grid-container button {
-  padding: 4px 8px;
-  border: 1px solid #c0c0c0;
-  background-color: #e0e0e0;
-  color: #000;
+  padding: 0.5rem 1rem;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #21262d;
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
   cursor: pointer;
   margin-top: 2rem;
 }
 
 .grid-container button:hover {
-  background-color: #d0d0d0;
+  background-color: #30363d;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 /* ----------------------- Footer ----------------------- */
 .footer {
   flex-shrink: 0;
   text-align: center;
-  background-color: #1c1c1c;
   padding: 0.5rem 1rem;
-  border-top: 1px solid #333;
+  background-color: #161b22;
+  color: #8b949e;
+  border-top: 1px solid #30363d;
 }
 
 .footer p {
