@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { getApodAndGreeting } from "../services/apodService.js";
 
-const FALLBACK_IMAGE_URL = "../../public/images/hubble-ultra-deep-field.jpeg";
+const FALLBACK_IMAGE_URL = "images/hubble-ultra-deep-field.jpeg";
 
 export const fetchApodData = async (_req: Request, res: Response) => {
   try {

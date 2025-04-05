@@ -11,15 +11,12 @@
       </div>
     </div>
     <div class="window-content">
-      <div style="display: grid; grid-template-rows: auto auto auto; gap: 1rem">
-        <img src="<%= apodUrl %>" alt="NASA APOD" style="max-width: 100%" />
+      <div class="grid-container">
+        <img src="<%= apodUrl %>" alt="NASA APOD" class="apod-img" />
         <div><%= greeting %></div>
-        <!-- Link to refresh the page by going to "/" again -->
-        <a
-          href="/"
-          style="padding: 6px; background-color: #ccc; text-decoration: none"
-        >
-          Refresh APOD & Greeting
+
+        <!-- Randomize Button -->
+        <button onclick="location.reload()">Randomize</button>
         </a>
       </div>
     </div>

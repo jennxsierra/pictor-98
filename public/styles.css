@@ -22,7 +22,7 @@ body {
   display: flex;
   justify-content: center; /* Centers the image horizontally */
   align-items: center; /* Centers the image vertically */
-  height: 100px; /* Adjust height as needed */
+  height: 100px;
 }
 
 .header-logo {
@@ -41,7 +41,8 @@ body {
 /* ----------------------- App Window ----------------------- */
 .app-window {
   width: 90%;
-  max-width: 800px;
+  max-width: 700px;
+  max-height: 700px;
   flex: 1 0 auto;
   background-color: #f0f0f0;
   margin: 2rem auto;
@@ -98,6 +99,41 @@ body {
   font-size: 22px;
   font-weight: 600;
   margin: 1rem 0;
+}
+
+/* ----------------------- Grid Container ----------------------- */
+.grid-container {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 1rem;
+  justify-items: center; /* Centers grid items horizontally */
+  text-align: center; /* Centers text inside grid items */
+}
+
+/* ----------------------- APOD Image ----------------------- */
+.apod-img {
+  width: 500px;      /* Set a fixed width */
+  height: 500px;     /* Set a fixed height */
+  object-fit: cover; /* Crop the image to fill the area */
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.apod-img:hover {
+  transform: scale(1.05);
+}
+
+.grid-container button {
+  padding: 4px 8px;
+  border: 1px solid #c0c0c0;
+  background-color: #e0e0e0;
+  color: #000;
+  cursor: pointer;
+}
+
+.grid-container button:hover {
+  background-color: #d0d0d0;
 }
 
 /* ----------------------- Footer ----------------------- */
