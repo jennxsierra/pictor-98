@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import { getApodAndGreeting } from "../services/apodService.js";
 
+const FALLBACK_IMAGE_URL = "../../public/images/hubble-ultra-deep-field.jpeg";
+
 export const fetchApodData = async (_req: Request, res: Response) => {
   try {
     const { apod, greeting } = await getApodAndGreeting();
@@ -9,12 +11,12 @@ export const fetchApodData = async (_req: Request, res: Response) => {
       greeting,
     });
   } catch (error: any) {
-    console.error("Error fetching data:", error);
-    res.status(500).render("error", {
-      message:
-        error.name === "AbortError"
-          ? "The request timed out. Please try again later."
-          : "Failed to fetch NASA APOD. Please try again later.",
+    console.error("NASA API failed after retries:", error);
+    // Use the fallback image only if the NASA API does not respond
+    // Greeting will still be fetched from the local JSON within the service
+    res.render("index", {
+      apodUrl: FALLBACK_IMAGE_URL,
+      greeting: "Unable to fetch NASA image. " + "Enjoy this fallback view!",
     });
   }
 };
