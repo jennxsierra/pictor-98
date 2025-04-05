@@ -2,16 +2,16 @@ import morgan from "morgan";
 import chalk from "chalk";
 import { Request } from "express";
 
-// Define a custom token to log the request body
+// Token for request body (will be mostly empty for GET)
 morgan.token("body", (req: Request) => JSON.stringify(req.body));
 
-// Define a custom token to log the timestamp in a more readable format
+// Token for human-readable timestamp
 morgan.token("timestamp", () => {
   const now = new Date();
   return now.toLocaleString();
 });
 
-// Define a custom token to color-code the HTTP method
+// Token for color-coded HTTP method
 morgan.token("methodColored", (req: Request) => {
   const method = req.method;
   switch (method) {
@@ -30,7 +30,7 @@ morgan.token("methodColored", (req: Request) => {
   }
 });
 
-// Define a custom token to color-code the status code
+// Token for color-coded status code
 morgan.token("statusColored", (_req, res) => {
   const status = res.statusCode;
   if (status >= 500) return chalk.red(status.toString());
@@ -40,19 +40,17 @@ morgan.token("statusColored", (_req, res) => {
   return chalk.white(status.toString());
 });
 
-// Create a custom format that includes color-coded tokens
 const customFormat = [
   chalk.gray("[:timestamp]"),
   ":methodColored",
   ":url",
   ":statusColored",
   chalk.yellow(":response-time ms"),
-  chalk.white(":body"),
 ].join(" ");
 
 const logger = morgan(customFormat, {
   skip: (req: Request) => {
-    // Skip logging for requests to static files with specific extensions
+    // Skip logging requests for static assets
     const skipExtensions = [".css", ".png", ".jpg", ".jpeg", ".gif", ".svg"];
     return skipExtensions.some((ext) => req.url.endsWith(ext));
   },
