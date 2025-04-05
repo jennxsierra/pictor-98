@@ -11,6 +11,7 @@ Pictor 98 is a retro-styled web application that generates a random daily pictur
 - [Features](#features)
 - [Installation](#installation)
 - [Project Structure](#project-structure)
+- [Fun Fact](#fun-fact)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
 
@@ -51,7 +52,7 @@ Pictor 98 is a retro-styled web application that generates a random daily pictur
    ```
 
   > [!NOTE]
-  > 
+  >
   > You can obtain a free API key from the [NASA API website](https://api.nasa.gov/). This key is required to access the APOD API. If you don't have an API key, the app will use the default `DEMO_KEY`, however this has much lower rate limits.
 
 4. **Run the Application**
@@ -105,6 +106,12 @@ Pictor 98 is a retro-styled web application that generates a random daily pictur
 ├── package-lock.json         
 └── tsconfig.json             
 ```
+
+## Fun Fact
+
+### Did you know?
+
+The name **Pictor** comes from the Latin word for "painter" and is also the name of a [small constellation](https://en.wikipedia.org/wiki/Pictor) in the southern sky. It represents an artist's easel and is home to the famous [Pictor A galaxy](https://en.wikipedia.org/wiki/Pictor_A), which contains a supermassive black hole emitting powerful radio waves!
 
 ## License
 
